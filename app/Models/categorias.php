@@ -6,13 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class productos extends Eloquent
+class categorias extends Eloquent
 {
     use HasFactory;
 
-    public function categorias()
+    public function productos()
     {
-        return $this->belongsTo(categorias::class, 'categoria_id', '_id');
+        return $this->hasMany(productos::class, 'categoria_id', '_id');
     }
-
 }

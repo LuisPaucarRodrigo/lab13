@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 use Illuminate\Contracts\Auth\Authenticatable;
+//use App\Models\perfilclientes;
 
 class User extends Eloquent implements Authenticatable
 {
@@ -21,6 +22,7 @@ class User extends Eloquent implements Authenticatable
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
         'name',
         'email',
@@ -45,4 +47,5 @@ class User extends Eloquent implements Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/card.css') }}">
 </head>
 <body>
     <div id="app">
@@ -57,7 +60,7 @@
                                     {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/home/{{Auth::user()->_id}}/perfilcliente">
                                         Perfil Cliente
                                     </a>
                                     <a class="dropdown-item" href="#">
@@ -79,9 +82,36 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
     </div>
+    <main class="py-4">
+        @yield('content')
+    </main>
+    <!--<header class="header">
+        <nav class="nav">
+            <a href="" class="logo "><img src="Imagenes/Galliry.png" alt=""></a>
+            <button class="nav_toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <ul class="nav_menu ">
+                <li class="nav_menu_items">
+                    <a href="#" class="nav_menu_link nav_link">Blog</a>
+                </li>
+                <li class="nav_menu_items">
+                    <a href="#" class="nav_menu_link nav_link">Videos</a>
+                </li>
+                <li class="nav_menu_items">
+                    <a href="#" class="nav_menu_link nav_link">Sobre mi</a>
+                </li>
+                <li class="nav_menu_items">
+                    <a href="#" class="nav_menu_link nav_link">Contacto</a>
+                </li>
+                <li>
+                    <button class="modo_claro nav_menu_items">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>-->
 </body>
 </html>

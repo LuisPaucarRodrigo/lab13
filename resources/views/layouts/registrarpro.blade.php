@@ -10,10 +10,9 @@
     <title>Document</title>
 </head>
 <body>
-
+    @yield('alerta')
     <div>
         @yield('contenido');
     </div>
-
 </body>
 </html>

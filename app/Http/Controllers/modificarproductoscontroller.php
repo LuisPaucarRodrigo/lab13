@@ -3,26 +3,38 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\productos;
+use App\Models\categorias;
 
 class modificarproductoscontroller extends Controller
 {
     public function index()
     {
-        $productos = productos::ALL();
-        return view('producto.productos')->with('producto',$productos);
+        $productos = productos::with('categorias')->get();
+        //dd($productos[0]);
+        return view('producto.productos')->with('productos',$productos);
+
     }
     public function create()
     {
-        return view('producto.create');
+        $categoria =categorias::All();
+        return view('producto.create')->with('categorias',$categoria);
+
     }
     public function insert(Request $request)
     {
         $producto = new productos();
-        $producto -> nombre =  $request->nombre;
-        $producto -> descripcion =  $request->descripcion;
-        $producto -> stock =  $request->stock;
-        $producto -> precio =  $request->precio;
-        $producto -> imagen =  $request->imagen;
+        $producto ->nombre = $request->get('nombre');
+        $producto ->categoria_id = $request->get('categoria_id');
+        $producto ->descripcion = $request->get('descripcion');
+        $producto ->stock = $request->get('stock');
+        $producto ->precio = $request->get('precio');
+        if ($request->hasFile('imagen')){
+            $nameimage = $request->file('imagen');
+            $url = 'image/imagenes/';
+            $filename = time().'-'.$nameimage->getClientOriginalName();
+            $namecompleto = $request->file('imagen')->move($url,$filename);
+            $producto -> imagen = $url.$filename;
+        }
         $producto -> save();
         return redirect('/producto');
     }

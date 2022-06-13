@@ -6,6 +6,7 @@
         <thead>
         <tr>
             <th scope="col">Nombre</th>
+            <th scope="col">Categoria</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Precio</th>
             <th scope="col">Stock</th>
@@ -13,14 +14,15 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($producto as $productos)
+        @foreach($productos as $producto)
             <tr>
-                <td>{{$productos->nombre}}</td>
-                <td>{{$productos->descripcion}}</td>
-                <td>{{$productos->precio}}</td>
-                <td>{{$productos->stock}}</td>
-                <td><a href="producto/{{$productos->_id}}/editar"><button type="button" class="btn btn-warning">Editar</button></a>
-                    <a href="producto/{{$productos->_id}}/delete"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                <td>{{$producto->nombre}}</td>
+                <td>{{$producto->categorias->nombre}}</td>
+                <td>{{$producto->descripcion}}</td>
+                <td>{{$producto->precio}}</td>
+                <td>{{$producto->stock}}</td>
+                <td><a href="producto/{{$producto->_id}}/editar"><button type="button" class="btn btn-warning">Editar</button></a>
+                    <a href="producto/{{$producto->_id}}/delete"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
             </tr>
         @endforeach
         </tbody>
